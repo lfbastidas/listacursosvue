@@ -10,36 +10,45 @@
 <body>
     <div id="app">
         <h1>
-          Mis Cursos de Platzi💚
+          FORMULARIO DE REGISTRO
         </h1>
           <p>
-            <input type="text" v-model="title" placeholder="Titulo del curso"/>
+            <input type="text" v-model="title" placeholder="Nombre"/>
           </p>
           <p>
-            <input type="number" v-model=" time" placeholder="Horas"/>
+            <input type="number" v-model="num" placeholder="Telefono"/>
           </p>
           <p>
-            <button v-on:click="addCourse">Guardar Curso</button>
+            <input type="email" v-model="correo" placeholder="Correo Electronico"/>
           </p>
+
+
+          <p>
+           
+            
+
+            <button v-on:click="addContacto">Guardar Registro</button>
+          
+          </p>
+        
         </fieldset>
         <div>
-          <h3>Lista de Cursos</h3>
-          <p v-if="totalTime===0" class="red">Aun no has realizado cursos</p>
+          <h3>Lista de Contactos</h3>
+          
           <div>
             <ol>
-              <li v-for="p in courses">
-                {{p.title}} - {{p.time}} Horas
+              <li v-for="(p,index) in contactos">
+                {{p.title}} - {{p.num}} - {{p.correo}}
+
+
+                <button v-on:click="editarContacto(index)">Editar contacto</button>
+                <button v-on:click="eliminarContacto(index)">Eliminar contacto</button>
+
               </li>
             </ol>
             <hr/>
             <p>
-              <span >
-                <h2> El tiempo total es {{totalTime}} </h2>
-              </span>
-              <span v-if="totalTime">
-              Llevo <strong>{{ totalTime }}</strong> horas aprendiendo en Platzi.
-              <b>#NuncaParesDeAprender 💚</b>
-              </span>
+              
             </p>
           </div>
         </div>

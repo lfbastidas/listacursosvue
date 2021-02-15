@@ -3,27 +3,32 @@ new Vue({
     
     data () {
       return {
-        courses: [],
+        contactos: [],
         title:'',
-        time:'0'
+        num:'',
+        correo:''
       }
     },
     
-    computed: {
-      totalTime() {
-        temp=0;
-        for(i=0; i<this.courses.length; i++){
-          temp = temp + this.courses[i].time
-        }
-        return temp;
-        
-      }
-      
-    },
     
     methods: {
-      addCourse () {
-        this.courses.push({title:this.title, time: parseInt(this.time)})
-      }
+      addContacto () {
+        
+        this.contactos.push({title:this.title, num: parseInt(this.num), correo: this.correo})
+        
+      },
+      editarContacto: function(id) {
+        console.log(id)
+      let con = this.contactos[id]
+     //console.log(con,id,this.contactos)
+        this.title=  con.title
+        this.num = con.num
+        this.correo = con.correo
+       
+      },
+      eliminarContacto: function (id) {
+        console.log(this.contactos.splice(id,1))
+       
+      },
     }
   })
